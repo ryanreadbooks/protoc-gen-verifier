@@ -1,0 +1,5 @@
+.vscode
+.idea
+out_dir/*
+*.txt
+protoc-gen-verifier

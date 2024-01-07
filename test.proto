@@ -1,0 +1,86 @@
+syntax = "proto3";
+
+package test;
+
+option go_package = "./pb";
+
+// this is leading detached
+// but i don't know why
+
+// this is also leading detached
+
+// comments 1
+// comments 1.1
+message TestMessage {
+
+  message NestedTest {
+    // @verify: eq=100,lt=10,eq=299
+    int32 code = 1;
+
+    // result is the result
+    // @verify: eq=3,ne=helloworld
+    string result = 2;
+  }
+  
+  // but is
+
+  // comments 2
+  // comments 2.2
+  // @verify: eq=290
+  // int32 tAge = 1;
+
+  string tName = 2 [ json_name = "t_name" ]; // comments 3
+  // this is what you came for
+
+  // @verify:eq=false
+  bool tBoolean = 3; 
+
+  // @verify: eq=3,gt=10
+  int64 tAge4 = 4;
+  // @verify: eq=3,gte=10
+  uint32 tAge5 = 5;
+  // @verify: eq=3,lt=10
+  uint64 tAge6 = 6;
+  // @verify: eq=3,lte=23
+  sint32 tAge7 = 7;
+  // @verify: eq=3,ne=100
+  sint64 tAge8 = 8;
+  // @verify: eq=3,gt=12
+  fixed32 tAge9 = 9;
+  // @verify: eq=3,lt=23
+  fixed64 tAge10 = 10;
+  // @verify: eq=3,ne=23,lt=12
+  sfixed32 tAge11 = 11;
+  // @verify: eq=3,gte=10,ne=32,lte=12
+  sfixed64 tAge12 = 12;
+  // @verify: len=10
+  bytes serial = 13;
+  // @verify: len=20
+  string testStr = 14;
+
+  // @verify: len=120,ne=12
+  repeated NestedTest repeatedNested = 15;
+
+  // @verify: len=12
+  NestedTest nested = 16;
+
+  // @verify: len=10,ne=12
+  map<int32, string> mapField = 17;
+  
+  // @verify: alpha
+  string alphaTest = 18;
+  // @verify: number
+  string numberTest = 19;
+  // @verify: contains=hello|world
+  string containsTest = 20;
+  // @verify: startswith=hello|world
+  string startsWithTest = 21;
+  // @verify: endswith=hello|world
+  string endsWithTest = 22;
+  
+  // @verify: len=12
+  oneof oneofField {
+    int32 intMember = 23;
+    NestedTest nestedMember = 24;
+  }
+} // are you ok?
