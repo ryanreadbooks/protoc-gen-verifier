@@ -1,4 +1,4 @@
-module protoc-gen-verifier
+module github.com/ryanreadbooks/protoc-gen-verifier
 
 go 1.20
 

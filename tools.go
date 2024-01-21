@@ -1,7 +1,7 @@
 package main
 
 import (
-	"protoc-gen-verifier/verifier"
+	"github.com/ryanreadbooks/protoc-gen-verifier/verifier"
 
 	"github.com/sirupsen/logrus"
 	"google.golang.org/protobuf/compiler/protogen"
